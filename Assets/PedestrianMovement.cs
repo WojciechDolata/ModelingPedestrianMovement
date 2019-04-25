@@ -18,7 +18,14 @@ public class PedestrianMovement : MonoBehaviour
     {
         if (!onCollision)
         {
-            transform.position += transform.right * speed * Time.deltaTime;
+            if (transform.position.x < goal.transform.position.x)
+            {
+                transform.position = Vector2.MoveTowards(transform.position, goal.transform.position, speed * Time.deltaTime);
+            }
+            else
+            {
+                transform.position += transform.right * speed * Time.deltaTime;
+            }
         }
 
         else

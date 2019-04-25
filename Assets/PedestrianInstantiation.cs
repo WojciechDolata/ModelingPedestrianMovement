@@ -20,6 +20,6 @@ public class PedestrianInstantiation : MonoBehaviour
 
     void InstantiatePedestrian()
     {
-        Instantiate(pedestrian, new Vector2(-9, Random.Range(-4.0f, 4.0f)), Quaternion.identity);
+        Instantiate(pedestrian, new Vector2(-9, Random.Range(-5.0f, 5.0f)), Quaternion.identity);
     }
 }
