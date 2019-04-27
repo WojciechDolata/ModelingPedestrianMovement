@@ -5,6 +5,9 @@ using UnityEngine;
 public class PedestrianInstantiation : MonoBehaviour
 {
     public GameObject pedestrian;
+    public GameObject goal;
+    public float goalX;
+    public float goalY;
 
     // Start is called before the first frame update
     void Start()
@@ -20,6 +23,6 @@ public class PedestrianInstantiation : MonoBehaviour
 
     void InstantiatePedestrian()
     {
-        Instantiate(pedestrian, new Vector2(0, Random.Range(0.0f, 10.0f)), Quaternion.identity);
+        Instantiate(pedestrian, new Vector2(0, Random.Range(3.5f, 6.5f)), Quaternion.identity);
     }
 }

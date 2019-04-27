@@ -5,10 +5,18 @@ using UnityEngine;
 public class PedestrianMovement : MonoBehaviour
 {
     private Rigidbody2D rb2d;
-    public float speed = 20f;
-    public GameObject goal;
+    private float speed;
     private bool wallCollision = false;
+    private GoalManager goalManager;
     private float y, x, step, collisionRadius = 0.05f; //do wykrywania czy miejsce jest zajete
+    private int lastUpMultiplier;
+
+    void Awake()
+    {
+        speed = Random.Range(5.0f, 15.0f);
+        goalManager = GetComponent<GoalManager>();
+    }
+
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
@@ -23,26 +31,48 @@ public class PedestrianMovement : MonoBehaviour
         y = transform.position.y;
         if (wallCollision) // needed so that they wouldn't slow down near wall
         {
-            if (transform.position.y > goal.transform.position.y)
+            if (transform.position.y > goalManager.goal.transform.position.y)
                 stepTowards(new Vector3(transform.position.x, transform.position.y - 1f));
             else
                 stepTowards(new Vector3(transform.position.x, transform.position.y + 1f));
         }
         else
         {
-            if (!isOccupied(tryToStepTowards(goal.transform.position)))
-                stepTowards(goal.transform.position);
+            if (!isOccupied(tryToStepTowards(goalManager.goal.transform.position)))
+                stepTowards(goalManager.goal.transform.position);
             else
             {
                 int upMultiplier = 1;
-                if (transform.position.y > goal.transform.position.y)
+                if (transform.position.y > goalManager.goal.transform.position.y)
                     upMultiplier = -1;
+
+                if(goalManager.success == false)
+                {
+                    if (lastUpMultiplier != upMultiplier)
+                    {
+                        upMultiplier = lastUpMultiplier;
+                    }
+                    else
+                    {
+                        lastUpMultiplier = upMultiplier;
+                    }
+                }
+                else
+                {
+                    lastUpMultiplier = upMultiplier;
+                    goalManager.success = false;
+                }
+
+
+
+
                 float[] angles = { 30f, 45f, 60f, 90f };
                 foreach (float currAngle in angles)
                 {
                     Vector3 tmpGoal = getPositionByAngle(upMultiplier * currAngle);
                     if (!isOccupied(tmpGoal))
                     {
+                        Debug.Log($"{currAngle} {upMultiplier} ");
                         stepTowards(tmpGoal);
                         break;
                     }
@@ -54,7 +84,10 @@ public class PedestrianMovement : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.collider.tag == "DestroyTrigger")
+        {
+            Destroy(goalManager.goal);
             Destroy(gameObject);
+        }
         else if (collision.collider.tag == "Wall")
             wallCollision = true;
     }
@@ -67,7 +100,7 @@ public class PedestrianMovement : MonoBehaviour
 
     Vector3 getPositionByAngle(float angle) // rotates vector around pivot (self position)
     {
-        Vector3 vectorFrom00 = tryToStepTowards(goal.transform.position) - transform.position;
+        Vector3 vectorFrom00 = tryToStepTowards(goalManager.goal.transform.position) - transform.position;
         angle += Mathf.Atan(vectorFrom00.y / vectorFrom00.x) * (180 / Mathf.PI); //add angle from vector towards goal
         vectorFrom00 = Quaternion.Euler(0,0,angle) * vectorFrom00;
         return vectorFrom00 + transform.position;
@@ -79,6 +112,8 @@ public class PedestrianMovement : MonoBehaviour
             return false;
         else if (colliders.Length == 1 && colliders[0].transform.position == transform.position)
             return false;
+        else if (colliders.Length == 1 && colliders[0].gameObject.tag == "DestroyTrigger")
+            return false;
         else
         {
             return true;
@@ -87,7 +122,7 @@ public class PedestrianMovement : MonoBehaviour
 
     Vector3 tryToStepTowards(Vector3 direction) //used to check if step will result in collision
     {
-        return Vector2.MoveTowards(transform.position, direction, 0.5f);
+        return Vector2.MoveTowards(transform.position, direction, 0.3f * step+0.1f);
     }
     void stepTowards(Vector3 direction) //to get position for actual step
     {
