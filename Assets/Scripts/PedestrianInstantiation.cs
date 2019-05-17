@@ -12,7 +12,7 @@ public class PedestrianInstantiation : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("InstantiatePedestrian", 1.0f, 0.4f);
+        InvokeRepeating("InstantiatePedestrian", 1.0f, 0.05f);
     }
 
     // Update is called once per frame
@@ -23,6 +23,7 @@ public class PedestrianInstantiation : MonoBehaviour
 
     void InstantiatePedestrian()
     {
-        Instantiate(pedestrian, new Vector2(0, Random.Range(3.5f, 6.5f)), Quaternion.identity);
+        Instantiate(pedestrian, new Vector2(-10, Random.Range(2f, 10f)), Quaternion.identity);
+        //Instantiate(pedestrian, new Vector2(-5, 4), Quaternion.identity);
     }
 }
