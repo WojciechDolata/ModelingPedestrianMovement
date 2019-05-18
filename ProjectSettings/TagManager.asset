@@ -4,9 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Wall
-  - Pedestrian
-  - DestroyTrigger
+  - Pavement
+  - Street
+  - Goal
   layers:
   - Default
   - TransparentFX
@@ -16,8 +16,8 @@ TagManager:
   - UI
   - 
   - 
-  - Obstacle
-  - Pedestrian
+  - 
+  - 
   - 
   - 
   - 
