@@ -7,6 +7,8 @@ TagManager:
   - Pavement
   - Street
   - Goal
+  - carA
+  - carB
   layers:
   - Default
   - TransparentFX
