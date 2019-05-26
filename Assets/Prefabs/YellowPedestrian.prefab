@@ -125,7 +125,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destinationObject: {fileID: 7312347544496834911, guid: 623255e939a014a48855190fac252d1a,
     type: 3}
+  initialGoalPosition: {x: 0, y: 0, z: 0}
   accuracy: 1.2
+  initialGoalAccuracy: 0.1
 --- !u!195 &4735263995621251330
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -142,7 +144,7 @@ NavMeshAgent:
   m_AngularSpeed: 120
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
+  m_AutoBraking: 0
   m_AutoRepath: 1
   m_Height: 2
   m_BaseOffset: 1
