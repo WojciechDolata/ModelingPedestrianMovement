@@ -11,13 +11,10 @@ public class CarMovement : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    {
+    {   
         speed = Random.Range(8, 13);
         agent = this.GetComponent<NavMeshAgent>();
-        goalPosition = new Vector3(
-        Random.Range(goal.transform.position.x, goal.transform.position.x),
-        8.32f,
-        Random.Range(goal.transform.position.z, goal.transform.position.z));
+        goalPosition = new Vector3( goal.transform.position.x, 8.32f, goal.transform.position.z); //should rather take goals based on objects created in scene manager,
         agent.SetDestination(goalPosition);
         agent.speed = this.speed;
     }
@@ -25,9 +22,14 @@ public class CarMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if ((Mathf.Abs(goalPosition.x - this.transform.position.x) < accuracy && Mathf.Abs(goalPosition.z - this.transform.position.z) < accuracy))
+        if (distance(goalPosition, this.transform.position) < accuracy)
         {
             Destroy(this.gameObject);
         }
+    }
+
+    float distance(Vector3 v1, Vector3 v2) // distance between 2 3D Vectors
+    {
+        return Mathf.Sqrt(Mathf.Pow(v1.x - v2.x, 2) + Mathf.Pow(v1.y - v2.y, 2) + Mathf.Pow(v1.z - v2.z, 2));
     }
 }

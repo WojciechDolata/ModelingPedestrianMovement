@@ -20,9 +20,9 @@ public class Manager : MonoBehaviour
 
         Vector3 areaSize = objectToSpawnOn.GetComponent<Renderer>().bounds.size;
         Vector3 areaToSpawn = new Vector3(
-            Random.Range(objectToSpawnOn.transform.position.x - areaSize.x / 2, objectToSpawnOn.transform.position.x + areaSize.x / 2),
+            objectToSpawnOn.transform.position.x + Random.Range(-areaSize.x / 2, areaSize.x / 2),
             8f,
-            Random.Range(objectToSpawnOn.transform.position.z - areaSize.z / 2, objectToSpawnOn.transform.position.z + areaSize.z / 2));
+            objectToSpawnOn.transform.position.z + Random.Range( - areaSize.z / 2, areaSize.z / 2));
 
         GameObject newPed = Instantiate(objectToSpawnOn.GetComponent<SpawnArea>().objectToSpawn, areaToSpawn, Quaternion.identity);
         newPed.GetComponent<MoveToGoal>().initialGoalPosition = objectToSpawnOn.GetComponent<SpawnArea>().initialGoal.transform.position;
