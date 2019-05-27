@@ -13,10 +13,10 @@ GameObject:
   - component: {fileID: 864370263673464788}
   - component: {fileID: 864370263673464795}
   - component: {fileID: 864370263673464794}
-  - component: {fileID: 864370263673464791}
   - component: {fileID: 864370263673464784}
+  - component: {fileID: 894300784237938161}
   m_Layer: 0
-  m_Name: BluePedestrian
+  m_Name: Pedestrian
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -111,23 +111,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &864370263673464791
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 864370263673464793}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cef293f64b3789d47b52ffa0bf9f9310, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  destinationObject: {fileID: 459146800078582881, guid: be1d6eae90fbdf045bb1f12483b12554,
-    type: 3}
-  initialGoalPosition: {x: 0, y: 0, z: 0}
-  accuracy: 1.2
-  initialGoalAccuracy: 0.1
 --- !u!195 &864370263673464784
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -150,3 +133,19 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &894300784237938161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 864370263673464793}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cef293f64b3789d47b52ffa0bf9f9310, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destinationObject: {fileID: 459146800078582881, guid: be1d6eae90fbdf045bb1f12483b12554,
+    type: 3}
+  currentGoalPosition: {x: 0, y: 0, z: 0}
+  currentAccuracy: 0

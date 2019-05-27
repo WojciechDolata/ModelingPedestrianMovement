@@ -5,7 +5,9 @@ using UnityEngine;
 public class SpawnArea : MonoBehaviour
 {
     public GameObject initialGoal;
-    public GameObject objectToSpawn;
+    public Material pedestrianMaterial;
+    public List<GameObject> possibleTargets = new List<GameObject>();
+
     // Start is called before the first frame update
     void Start()
     {

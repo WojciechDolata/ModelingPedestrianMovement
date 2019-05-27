@@ -3,20 +3,19 @@ using UnityEngine.AI;
 
 public class CarMovement : MonoBehaviour
 {
-    public GameObject goal;
-    private Vector3 goalPosition;
-    private NavMeshAgent agent;
+    public Vector3 goalPosition;
     public float accuracy = 0.2f;
-    public float speed;
+    public float minSpeed = 8;
+    public float maxSpeed = 13;
+    private NavMeshAgent agent;
 
     // Start is called before the first frame update
     void Start()
-    {   
-        speed = Random.Range(8, 13);
+    {
         agent = this.GetComponent<NavMeshAgent>();
-        goalPosition = new Vector3( goal.transform.position.x, 8.32f, goal.transform.position.z); //should rather take goals based on objects created in scene manager,
+        goalPosition = new Vector3(goalPosition.x, 8.32f, goalPosition.z); //should rather take goals based on objects created in scene manager,
         agent.SetDestination(goalPosition);
-        agent.speed = this.speed;
+        agent.speed = Random.Range(8, 13);
     }
 
     // Update is called once per frame
