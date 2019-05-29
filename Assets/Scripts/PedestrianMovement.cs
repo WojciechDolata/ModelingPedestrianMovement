@@ -7,7 +7,7 @@ public class PedestrianMovement : MonoBehaviour
     public Vector3 initialGoalPosition;
     public float initialGoalAccuracy = 15f;
 
-    public float finalGoalaccuracy = 2f;
+    public float finalGoalAccuracy = 2f;
     public Vector3 finalGoalPosition;
 
     private NavMeshAgent agent;
@@ -27,7 +27,7 @@ public class PedestrianMovement : MonoBehaviour
             agent.SetDestination(finalGoalPosition);
         }
 
-        if (distance(finalGoalPosition, this.transform.position) < finalGoalaccuracy)
+        if (distance(finalGoalPosition, this.transform.position) < finalGoalAccuracy)
         {
             Destroy(this.gameObject);
         }
