@@ -5,13 +5,25 @@ public class TimeManager : MonoBehaviour
 {
     private const int SECONDS_IN_DAY = 86400;
     
-    private enum dayOfWeek { Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday };
-    private dayOfWeek day = dayOfWeek.Monday;
+    public enum dayOfWeek { Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday };
+    public dayOfWeek day = dayOfWeek.Monday;
     public float time;
     public float speedUpFactor;
     public float slowDownFactor;
     public float maxTimeScale;
     public float minTimeScale;
+
+    //public TimeManager()
+    //{
+    //    time = 0;
+    //    day = dayOfWeek.Monday;
+    //}
+
+    //private void Start()
+    //{
+    //    setTime(ApplicationModel.hhmmss);
+    //    setDay(ApplicationModel.day);
+    //}
 
     void Update()
     {
@@ -21,6 +33,39 @@ public class TimeManager : MonoBehaviour
         {
             time %= SECONDS_IN_DAY;
             NextDay();
+        }
+    }
+
+    public void setTime(string hhmmss) // 'hh:mm:ss'
+    {
+        time = (hhmmss[0] - '0') * 36000 + (hhmmss[1] - '0') * 3600 + (hhmmss[3] - '0') * 600 + (hhmmss[4] - '0') * 60 + (hhmmss[6] - '0') * 10 + (hhmmss[7] - '0');
+    }
+
+    public void setDay(int num)
+    {
+        switch (num)
+        {
+            case 0:
+                day = dayOfWeek.Monday;
+                break;
+            case 1:
+                day = dayOfWeek.Tuesday;
+                break;
+            case 2:
+                day = dayOfWeek.Wednesday;
+                break;
+            case 3:
+                day = dayOfWeek.Thursday;
+                break;
+            case 4:
+                day = dayOfWeek.Friday;
+                break;
+            case 5:
+                day = dayOfWeek.Saturday;
+                break;
+            case 6:
+                day = dayOfWeek.Sunday;
+                break;
         }
     }
 

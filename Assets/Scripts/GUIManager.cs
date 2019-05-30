@@ -24,6 +24,8 @@ public class GUIManager : MonoBehaviour
     void Start()
     {
         time = this.GetComponent<TimeManager>();
+        time.setDay(ApplicationModel.numOfDay);
+        time.setTime(ApplicationModel.hhmmss);
     }
 
     void SetGuiStyle()
