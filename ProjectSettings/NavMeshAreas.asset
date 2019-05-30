@@ -14,7 +14,7 @@ NavMeshProjectSettings:
   - name: Pavement
     cost: 1
   - name: Street
-    cost: 5
+    cost: 2
   - name: 
     cost: 1
   - name: 

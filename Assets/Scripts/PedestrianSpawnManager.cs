@@ -34,7 +34,14 @@ public class PedestrianSpawnManager : MonoBehaviour
     void InitPedestrian(GameObject newPed)
     {
         newPed.GetComponent<PedestrianMovement>().initialGoalPosition = spawnArea.GetComponent<SpawnArea>().initialGoal.transform.position;
-        newPed.GetComponent<PedestrianMovement>().destinationObject = spawnArea.GetComponent<SpawnArea>().possibleTargets[Random.Range(0, spawnArea.GetComponent<SpawnArea>().possibleTargets.Count)];
+
+        // pedestrian can reach every goal! (apart from its spawn position)
+        do
+        {
+            newPed.GetComponent<PedestrianMovement>().destinationObject = spawnAreas[Random.Range(0, spawnAreas.Count)]; //spawnArea.GetComponent<SpawnArea>().possibleTargets[Random.Range(0, spawnArea.GetComponent<SpawnArea>().possibleTargets.Count - 1)];
+        } while (
+            newPed.GetComponent<PedestrianMovement>().destinationObject.transform.position == newPed.GetComponent<PedestrianMovement>().initialGoalPosition
+        );
         newPed.GetComponent<Renderer>().material = spawnArea.GetComponent<SpawnArea>().pedestrianMaterial;
     }
 }

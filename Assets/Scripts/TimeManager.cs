@@ -4,6 +4,7 @@ using System;
 public class TimeManager : MonoBehaviour
 {
     private const int SECONDS_IN_DAY = 86400;
+    
     private enum dayOfWeek { Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday };
     private dayOfWeek day = dayOfWeek.Monday;
     public float time;

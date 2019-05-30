@@ -17,7 +17,7 @@ public class PedestrianMovement : MonoBehaviour
     {
         agent = this.GetComponent<NavMeshAgent>();
         setFinalTarget();
-        agent.SetDestination(initialGoalPosition);
+        agent.SetDestination(finalGoalPosition); // probably initial goal is not needed, if so we have to delete it from PedestrianMovement
     }
 
     void Update()
