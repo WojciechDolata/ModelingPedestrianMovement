@@ -13,17 +13,11 @@ public class TimeManager : MonoBehaviour
     public float maxTimeScale;
     public float minTimeScale;
 
-    //public TimeManager()
-    //{
-    //    time = 0;
-    //    day = dayOfWeek.Monday;
-    //}
-
-    //private void Start()
-    //{
-    //    setTime(ApplicationModel.hhmmss);
-    //    setDay(ApplicationModel.day);
-    //}
+    private void Start()
+    {
+        setTime(ApplicationModel.hhmmss);
+        setDay(ApplicationModel.numOfDay);
+    }
 
     void Update()
     {
