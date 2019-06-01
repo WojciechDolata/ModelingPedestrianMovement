@@ -32,7 +32,7 @@ public class MenuScript : MonoBehaviour
         else if (val == 2)
             return "15:00:00";
         else if (val == 3)
-            return "17:00:00";
+            return "18:00:00";
         else
             return "21:00:00";
     }

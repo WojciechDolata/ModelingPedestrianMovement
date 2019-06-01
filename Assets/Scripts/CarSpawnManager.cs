@@ -12,14 +12,18 @@ public class CarSpawnManager : MonoBehaviour
 
     void Start()
     {
-        InvokeRepeating("InstantiateCar", 5f, Random.Range(minIntervalTime, maxIntervalTime));
+        Invoke("InstantiateCar", 5f);
     }
 
     void InstantiateCar()
     {
+        float randomTime = Random.Range(minIntervalTime, maxIntervalTime);
+
         spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Count)];
         GameObject newCar = Instantiate(carPrefab, spawnPoint.transform.position, Quaternion.identity * Quaternion.Euler(0.0f, spawnPoint.GetComponent<SpawnPoint>().carRotation, 0.0f));
         InitCar(newCar);
+
+        Invoke("InstantiateCar", randomTime);
     }
 
     void InitCar(GameObject newCar)

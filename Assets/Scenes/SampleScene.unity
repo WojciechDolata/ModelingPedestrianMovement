@@ -6289,8 +6289,8 @@ MonoBehaviour:
   - {fileID: 1388982084}
   pedestrianPrefab: {fileID: 864370263673464793, guid: 0fb2d2c21746e134cb6fdc355b57b7e1,
     type: 3}
-  minIntervalTime: 2
-  maxIntervalTime: 7
+  minIntervalTime: 10
+  maxIntervalTime: 17
   yCoordinate: 8
 --- !u!114 &848562531
 MonoBehaviour:
@@ -7112,13 +7112,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.38695073, y: -0.59203607, z: 0.38742045, w: 0.59132725}
-  m_LocalPosition: {x: 12.6, y: 33.7, z: -50.3}
+  m_LocalRotation: {x: 0.44472787, y: -0.549855, z: 0.44526544, w: 0.5491952}
+  m_LocalPosition: {x: 7, y: 21.1, z: -42.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 66.4, y: -90.068, z: 0.001}
+  m_LocalEulerAnglesHint: {x: 78, y: -90.068, z: 0.001}
 --- !u!1 &966368786
 GameObject:
   m_ObjectHideFlags: 0

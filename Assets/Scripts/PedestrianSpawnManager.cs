@@ -14,11 +14,13 @@ public class PedestrianSpawnManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("InstantiatePedestrian", 1f, Random.Range(minIntervalTime, maxIntervalTime));
+        Invoke("InstantiatePedestrian", 1f);
     }
 
     void InstantiatePedestrian()
     {
+        float randomTime = Random.Range(minIntervalTime, maxIntervalTime);
+
         spawnArea = spawnAreas[Random.Range(0, spawnAreas.Count)];
 
         Vector3 areaSize = spawnArea.GetComponent<Renderer>().bounds.size;
@@ -29,6 +31,8 @@ public class PedestrianSpawnManager : MonoBehaviour
 
         GameObject newPed = Instantiate(pedestrianPrefab, areaToSpawn, Quaternion.identity);
         InitPedestrian(newPed);
+
+        Invoke("InstantiatePedestrian", randomTime);
     }
 
     void InitPedestrian(GameObject newPed)
