@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8393973610652949236}
   - component: {fileID: -94553488104552313}
   m_Layer: 0
-  m_Name: CarA
+  m_Name: Car
   m_TagString: carA
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -127,6 +127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a190881b4a38ab44af8f15bd2f5d8c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  goal: {fileID: 4073175673155575196, guid: 169718e7b7a774c4fbe0d23be010a952, type: 3}
+  goalPosition: {x: 0, y: 0, z: 0}
   accuracy: 0.5
-  speed: 0
+  minSpeed: 8
+  maxSpeed: 13
