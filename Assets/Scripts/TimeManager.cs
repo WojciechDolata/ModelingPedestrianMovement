@@ -101,7 +101,7 @@ public class TimeManager : MonoBehaviour
             }
         }
 
-        if (day >= dayOfWeek.Monday && day <= dayOfWeek.Friday)
+       /* if (day >= dayOfWeek.Monday && day <= dayOfWeek.Friday)
         {
             switch (ApplicationModel.hhmmss)
             {
@@ -143,7 +143,7 @@ public class TimeManager : MonoBehaviour
                     setCarInterval(1000, 2000);
                     break;
             }
-        }
+        }*/
     }
 
 

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GUIManager : MonoBehaviour
 {
@@ -18,6 +19,13 @@ public class GUIManager : MonoBehaviour
         if(GUI.Button(new Rect(130, 45, 100, 20), "Speed Up"))
         {
             time.DoSpeedUp();
+        }
+
+        if (GUI.Button(new Rect(20, 75, 210, 20), "Menu"))
+        {
+            SceneManager.LoadScene(0, LoadSceneMode.Single);
+            Time.timeScale = 1;
+            Destroy(this);
         }
     }
 

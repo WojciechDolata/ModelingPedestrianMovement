@@ -7151,8 +7151,8 @@ MonoBehaviour:
   spawnPoints:
   - {fileID: 1643426754}
   - {fileID: 79420089}
-  minIntervalTime: 5
-  maxIntervalTime: 10
+  minIntervalTime: 600
+  maxIntervalTime: 800
   carPrefab: {fileID: 7074749677474846264, guid: 0cf34b0ecd505144b9b530d1a94a72ea,
     type: 3}
 --- !u!114 &848562532
