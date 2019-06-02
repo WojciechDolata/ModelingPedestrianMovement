@@ -711,6 +711,8 @@ Transform:
   - {fileID: 152331347}
   - {fileID: 13883145}
   - {fileID: 71183003}
+  - {fileID: 508802496}
+  - {fileID: 546787886}
   m_Father: {fileID: 1010480873}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1290,7 +1292,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 71182999}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -237.51, y: -185.59514, z: 7.1}
+  m_LocalPosition: {x: -237.51, y: -185.59514, z: 24.200003}
   m_LocalScale: {x: 6.363063, y: 0.7840219, z: 25.309336}
   m_Children: []
   m_Father: {fileID: 46172659}
@@ -1953,6 +1955,10 @@ MonoBehaviour:
   pedestrianMaterial: {fileID: 2100000, guid: 82553353f2ab9414ebcf6633a8d306c8, type: 2}
   possibleTargets:
   - {fileID: 1756842389}
+  - {fileID: 1801115964}
+  - {fileID: 286633359}
+  - {fileID: 1250744297}
+  - {fileID: 1388982084}
 --- !u!4 &151082319 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 459146800078582893, guid: be1d6eae90fbdf045bb1f12483b12554,
@@ -2337,7 +2343,11 @@ MonoBehaviour:
   initialGoal: {fileID: 365462630}
   pedestrianMaterial: {fileID: 2100000, guid: 82553353f2ab9414ebcf6633a8d306c8, type: 2}
   possibleTargets:
+  - {fileID: 1801115964}
   - {fileID: 1756842389}
+  - {fileID: 286633359}
+  - {fileID: 1250744297}
+  - {fileID: 1388982084}
 --- !u!4 &261881740 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 459146800078582893, guid: be1d6eae90fbdf045bb1f12483b12554,
@@ -2643,7 +2653,10 @@ MonoBehaviour:
   initialGoal: {fileID: 61341760}
   pedestrianMaterial: {fileID: 2100000, guid: e0c7c4cfe0ef572418722ad699d4300f, type: 2}
   possibleTargets:
-  - {fileID: 0}
+  - {fileID: 151082314}
+  - {fileID: 261881736}
+  - {fileID: 610751459}
+  - {fileID: 2037280488}
 --- !u!1 &297984868
 GameObject:
   m_ObjectHideFlags: 0
@@ -3639,6 +3652,97 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 500832823}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &508802495
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 508802496}
+  - component: {fileID: 508802499}
+  - component: {fileID: 508802498}
+  - component: {fileID: 508802497}
+  m_Layer: 0
+  m_Name: Street (6)
+  m_TagString: Street
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 4
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!4 &508802496
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 508802495}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -243.8954, y: -185.59514, z: 7.0999985}
+  m_LocalScale: {x: 6.36306, y: 0.78402, z: 25.30934}
+  m_Children: []
+  m_Father: {fileID: 46172659}
+  m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &508802497
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 508802495}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &508802498
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 508802495}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 5c8a4e1f248ae9f4fab83ef327ff3898, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &508802499
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 508802495}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &509795036
 GameObject:
   m_ObjectHideFlags: 0
@@ -4281,6 +4385,97 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 545229917}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &546787885
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 546787886}
+  - component: {fileID: 546787889}
+  - component: {fileID: 546787888}
+  - component: {fileID: 546787887}
+  m_Layer: 0
+  m_Name: Street (7)
+  m_TagString: Street
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 4
+  m_StaticEditorFlags: 4294967295
+  m_IsActive: 1
+--- !u!4 &546787886
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 546787885}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -237.51, y: -185.59514, z: 7.0999985}
+  m_LocalScale: {x: 6.36306, y: 0.78402, z: 25.30934}
+  m_Children: []
+  m_Father: {fileID: 46172659}
+  m_RootOrder: 17
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &546787887
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 546787885}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &546787888
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 546787885}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 5c8a4e1f248ae9f4fab83ef327ff3898, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &546787889
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 546787885}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &568340398
 GameObject:
   m_ObjectHideFlags: 0
@@ -4935,7 +5130,11 @@ MonoBehaviour:
   initialGoal: {fileID: 365462630}
   pedestrianMaterial: {fileID: 2100000, guid: 82553353f2ab9414ebcf6633a8d306c8, type: 2}
   possibleTargets:
+  - {fileID: 1801115964}
   - {fileID: 1756842389}
+  - {fileID: 286633359}
+  - {fileID: 1250744297}
+  - {fileID: 1388982084}
 --- !u!1 &614597788
 GameObject:
   m_ObjectHideFlags: 0
@@ -7367,12 +7566,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 873403068}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &882882864 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7312347544496834911, guid: 623255e939a014a48855190fac252d1a,
-    type: 3}
-  m_PrefabInstance: {fileID: 572621197}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &900248579
 GameObject:
   m_ObjectHideFlags: 0
@@ -10478,6 +10671,9 @@ MonoBehaviour:
   initialGoal: {fileID: 923064168}
   pedestrianMaterial: {fileID: 2100000, guid: e0c7c4cfe0ef572418722ad699d4300f, type: 2}
   possibleTargets:
+  - {fileID: 151082314}
+  - {fileID: 261881736}
+  - {fileID: 610751459}
   - {fileID: 2037280488}
 --- !u!1 &1250801452
 GameObject:
@@ -11172,7 +11368,10 @@ MonoBehaviour:
   initialGoal: {fileID: 61341760}
   pedestrianMaterial: {fileID: 2100000, guid: e0c7c4cfe0ef572418722ad699d4300f, type: 2}
   possibleTargets:
-  - {fileID: 0}
+  - {fileID: 151082314}
+  - {fileID: 261881736}
+  - {fileID: 610751459}
+  - {fileID: 2037280488}
 --- !u!1 &1427570585
 GameObject:
   m_ObjectHideFlags: 0
@@ -14601,7 +14800,10 @@ MonoBehaviour:
   initialGoal: {fileID: 61341760}
   pedestrianMaterial: {fileID: 2100000, guid: e0c7c4cfe0ef572418722ad699d4300f, type: 2}
   possibleTargets:
-  - {fileID: 0}
+  - {fileID: 151082314}
+  - {fileID: 261881736}
+  - {fileID: 610751459}
+  - {fileID: 2037280488}
 --- !u!4 &1756842393 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7312347544496834907, guid: 623255e939a014a48855190fac252d1a,
@@ -15084,7 +15286,10 @@ MonoBehaviour:
   initialGoal: {fileID: 61341760}
   pedestrianMaterial: {fileID: 2100000, guid: e0c7c4cfe0ef572418722ad699d4300f, type: 2}
   possibleTargets:
-  - {fileID: 0}
+  - {fileID: 151082314}
+  - {fileID: 261881736}
+  - {fileID: 610751459}
+  - {fileID: 2037280488}
 --- !u!4 &1801115966 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7312347544496834907, guid: 623255e939a014a48855190fac252d1a,
@@ -16378,7 +16583,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1982446364}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -243.8954, y: -185.59514, z: 7.1}
+  m_LocalPosition: {x: -243.8954, y: -185.59514, z: 24.2}
   m_LocalScale: {x: 6.363063, y: 0.7840219, z: 25.309336}
   m_Children: []
   m_Father: {fileID: 46172659}
@@ -16682,7 +16887,12 @@ MonoBehaviour:
   initialGoal: {fileID: 1250801452}
   pedestrianMaterial: {fileID: 2100000, guid: 82553353f2ab9414ebcf6633a8d306c8, type: 2}
   possibleTargets:
-  - {fileID: 882882864}
+  - {fileID: 1801115964}
+  - {fileID: 1756842389}
+  - {fileID: 286633359}
+  - {fileID: 151082314}
+  - {fileID: 1250744297}
+  - {fileID: 1388982084}
 --- !u!1 &2064146352
 GameObject:
   m_ObjectHideFlags: 0

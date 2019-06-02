@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class PedestrianSpawnManager : MonoBehaviour
-{
+public class PedestrianSpawnManager : MonoBehaviour {
     public List<GameObject> spawnAreas = new List<GameObject>();
     public GameObject pedestrianPrefab;
     public float minIntervalTime;
@@ -40,12 +39,13 @@ public class PedestrianSpawnManager : MonoBehaviour
         newPed.GetComponent<PedestrianMovement>().initialGoalPosition = spawnArea.GetComponent<SpawnArea>().initialGoal.transform.position;
 
         // pedestrian can reach every goal! (apart from its spawn position)
-        do
-        {
-            newPed.GetComponent<PedestrianMovement>().destinationObject = spawnAreas[Random.Range(0, spawnAreas.Count)]; //spawnArea.GetComponent<SpawnArea>().possibleTargets[Random.Range(0, spawnArea.GetComponent<SpawnArea>().possibleTargets.Count - 1)];
-        } while (
-            newPed.GetComponent<PedestrianMovement>().destinationObject.transform.position == newPed.GetComponent<PedestrianMovement>().initialGoalPosition
-        );
+        newPed.GetComponent<PedestrianMovement>().destinationObject = spawnArea.GetComponent<SpawnArea>().possibleTargets[Random.Range(0, spawnArea.GetComponent<SpawnArea>().possibleTargets.Count)];
+        //do
+        //{
+        //    newPed.GetComponent<PedestrianMovement>().destinationObject = spawnAreas[Random.Range(0, spawnAreas.Count)]; //spawnArea.GetComponent<SpawnArea>().possibleTargets[Random.Range(0, spawnArea.GetComponent<SpawnArea>().possibleTargets.Count - 1)];
+        //} while (
+        //    newPed.GetComponent<PedestrianMovement>().destinationObject.transform.position == newPed.GetComponent<PedestrianMovement>().initialGoalPosition
+        //);
         newPed.GetComponent<Renderer>().material = spawnArea.GetComponent<SpawnArea>().pedestrianMaterial;
     }
 }
