@@ -8,6 +8,7 @@ public class PedestrianMovement : MonoBehaviour
     public float finalGoalAccuracy = 3f;
     public Vector3 finalGoalPosition;
 
+    public float speed = 3.0f;
     private NavMeshAgent agent;
 
     // Start is called before the first frame update
@@ -15,6 +16,7 @@ public class PedestrianMovement : MonoBehaviour
     {
         agent = this.GetComponent<NavMeshAgent>();
         agent.SetDestination(finalGoalPosition); // probably initial goal is not needed, if so we have to delete it from PedestrianMovement
+        agent.speed = speed;
     }
 
     void Update()

@@ -81,10 +81,13 @@ public class PedestrianSpawnManager : MonoBehaviour {
 
     void InitPedestrian(GameObject spawnArea, int count, int goalNumber)
     {
+        var speed = Random.Range(3.0f, 4.0f);
         for(int i = 0; i < count; i++)
         {
-            GameObject newPedestrian = Instantiate(pedestrianPrefab, spawnArea.transform.position, Quaternion.identity);
+            GameObject newPedestrian = Instantiate(pedestrianPrefab, new Vector3(spawnArea.transform.position.x - 0.5f + i*0.2f, spawnArea.transform.position.y, spawnArea.transform.position.z) , Quaternion.identity);
             newPedestrian.GetComponent<PedestrianMovement>().finalGoalPosition = spawnAreas[goalNumber].transform.position;
+            newPedestrian.GetComponent<PedestrianMovement>().speed = speed;
+
             //newPedestrian.GetComponent<PedestrianMovement>().initialGoalPosition = spawnAreas[goalNumber].transform.position;
             newPedestrian.GetComponent<Renderer>().material = spawnArea.GetComponent<SpawnArea>().pedestrianMaterial;
         }
