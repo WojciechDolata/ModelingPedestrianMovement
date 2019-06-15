@@ -43,114 +43,15 @@ public class TimeManager : MonoBehaviour
         }
     }
 
-    void setPedInterval(float minInterval, float maxInterval)
-    {
-        psm.minIntervalTime = minInterval;
-        psm.maxIntervalTime = maxInterval;
-    }
-
     void setCarInterval(float minInterval, float maxInterval)
     {
         csm.minIntervalTime = minInterval;
         csm.maxIntervalTime = maxInterval;
     }
 
-    void setTraffic()
-    {
-        if(day >= dayOfWeek.Monday && day <= dayOfWeek.Friday)
-        {
-            switch (ApplicationModel.hhmmss)
-            {
-                case "07:00:00":
-                    setPedInterval(4, 9);
-                    break;
-                case "11:00:00":
-                    setPedInterval(2, 7);
-                    break;
-                case "15:00:00":
-                    setPedInterval(2, 7);
-                    break;
-                case "18:00:00":
-                    setPedInterval(4, 9);
-                    break;
-                case "21:00:00":
-                    setPedInterval(10, 17);
-                    break;
-            }
-        }
-
-        else
-        {
-            switch (ApplicationModel.hhmmss)
-            {
-                case "07:00:00":
-                    setPedInterval(15, 20);
-                    break;
-                case "11:00:00":
-                    setPedInterval(10, 15);
-                    break;
-                case "15:00:00":
-                    setPedInterval(15, 17);
-                    break;
-                case "18:00:00":
-                    setPedInterval(15, 17);
-                    break;
-                case "21:00:00":
-                    setPedInterval(15, 20);
-                    break;
-            }
-        }
-
-       /* if (day >= dayOfWeek.Monday && day <= dayOfWeek.Friday)
-        {
-            switch (ApplicationModel.hhmmss)
-            {
-                case "07:00:00":
-                    setCarInterval(20, 30);
-                    break;
-                case "11:00:00":
-                    setCarInterval(50, 60);
-                    break;
-                case "15:00:00":
-                    setCarInterval(45, 55);
-                    break;
-                case "18:00:00":
-                    setCarInterval(50, 70);
-                    break;
-                case "21:00:00":
-                    setCarInterval(90, 150);
-                    break;
-            }
-        }
-
-        else
-        {
-            switch (ApplicationModel.hhmmss)
-            {
-                case "07:00:00":
-                    setCarInterval(90, 150);
-                    break;
-                case "11:00:00":
-                    setCarInterval(250, 350);
-                    break;
-                case "15:00:00":
-                    setCarInterval(250, 350);
-                    break;
-                case "18:00:00":
-                    setCarInterval(250, 350);
-                    break;
-                case "21:00:00":
-                    setCarInterval(1000, 2000);
-                    break;
-            }
-        }*/
-    }
-
-
     public void setTime(string hhmmss) // 'hh:mm:ss'
     {
         time = (hhmmss[0] - '0') * 36000 + (hhmmss[1] - '0') * 3600 + (hhmmss[3] - '0') * 600 + (hhmmss[4] - '0') * 60 + (hhmmss[6] - '0') * 10 + (hhmmss[7] - '0');
-        setTraffic();
     }
 
     public bool checkTime(string hhmmss)

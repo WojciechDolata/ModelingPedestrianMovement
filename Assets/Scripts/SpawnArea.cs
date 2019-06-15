@@ -13,7 +13,7 @@ public class SpawnArea : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        loadGoalPercentages();
+        loadData();
     }
 
     /*
@@ -33,14 +33,8 @@ public class SpawnArea : MonoBehaviour
             return 4;
     }
 
-    void loadGoalPercentages()
+    void loadData()
     {
         this.goalPercentages = ApplicationModel.percentagesPerScenePerGoal[ApplicationModel.sceneNumber][goalNameMapper()];
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

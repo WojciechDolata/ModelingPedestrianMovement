@@ -5,7 +5,6 @@ public class GUIManager : MonoBehaviour
 {
     TimeManager time;
     GUIStyle guiStyle = new GUIStyle();
-    ApplicationModel app;
 
     void OnGUI()
     {

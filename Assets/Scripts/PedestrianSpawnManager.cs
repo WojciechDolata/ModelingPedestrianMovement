@@ -2,25 +2,21 @@
 using UnityEngine;
 
 public class PedestrianSpawnManager : MonoBehaviour {
-    public List<GameObject> spawnAreas = new List<GameObject>();
+
+    public List<GameObject> spawnAreas = new List<GameObject>(); // Lista naszych SpawnAreas
     public GameObject pedestrianPrefab;
-    public float minIntervalTime;
-    public float maxIntervalTime;
-    public float yCoordinate = 8f;
-    public List<double> spawnPercentages = new List<double>(); //should get it from Application model based on hour
-    public double groupsPerMinute; //number of ppl per minute to be spawned
-    public List<double> percentagesPerGroup = new List<double>(); //procent ludzi w 1, 2, 3 i 4 osobowych grupach
+    public List<double> spawnPercentages = new List<double>(); // Rozkład prawdopodobieństwa na spawn w danym SpawnArea
+    public double groupsPerMinute; // Ilość grup 1, 2,3 lub 4 osobowych na minutę
+    public List<double> percentagesPerGroup = new List<double>(); // Rozkład prawdopodobieństwa na 1, 2, 3 i 4 osobowe grupy
     private GameObject spawnArea;
-    public List<double> goalPercentages = new List<double>();
+    public List<double> goalPercentages = new List<double>(); // Rozkład prawdopodobieństwa na punkty docelowe, czyli Quo Vadis
 
 
-    // Start is called before the first frame update
     void Start()
     {
         loadData();
         Invoke("InstantiatePedestrian", 1f);
     }
-
 
     void loadData()
     {
@@ -31,10 +27,13 @@ public class PedestrianSpawnManager : MonoBehaviour {
 
     void InstantiatePedestrian()
     {
+        // czas przed kolejnym spawnem
         var randomTime = Random.Range((float) (60.0f*0.6/ groupsPerMinute), (float) (60.0f*1.4/ groupsPerMinute));
 
+        /*
+         Liczy ile osób powinno być utworzonych w danej chwili (int count)
+            */
         double randomNumber = Random.Range(0.0f, 1.0f);
-
         int count = 1;
         double sum = 0;
         foreach( var cur in percentagesPerGroup)
@@ -43,9 +42,12 @@ public class PedestrianSpawnManager : MonoBehaviour {
             if (randomNumber <= sum)
                 break;
 
-            count++; // count now includes number of people to be spawned at once
+            count++;
         }
 
+        /*
+         Liczy w którym SpawnArea powinni pojawić się piesi
+            */
         randomNumber = Random.Range(0.0f, 1.0f);
         int spawnAreaNumber = 0;
         sum = 0;
@@ -55,13 +57,17 @@ public class PedestrianSpawnManager : MonoBehaviour {
             if (randomNumber <= sum)
                 break;
 
-            spawnAreaNumber++; // spawnAreaNumber now includes number of spawn area to be spawned in
+            spawnAreaNumber++;
         }
 
         goalPercentages = ApplicationModel.percentagesPerScenePerGoal[ApplicationModel.sceneNumber][spawnAreaNumber];
 
         GameObject spawn = spawnAreas[spawnAreaNumber];
 
+
+        /*
+         Liczy w którym miejscu powinien być ich punkt docelowy
+            */
         randomNumber = Random.Range(0.0f, 1.0f);
         int goalNumber = 0;
         sum = 0;
@@ -71,7 +77,7 @@ public class PedestrianSpawnManager : MonoBehaviour {
             if (randomNumber <= sum)
                 break;
 
-            goalNumber++; // now contains spawn area to end at (goal)
+            goalNumber++;
         }
 
         InitPedestrian(spawn, count, goalNumber);
@@ -79,6 +85,9 @@ public class PedestrianSpawnManager : MonoBehaviour {
         Invoke("InstantiatePedestrian", randomTime);
     }
 
+    /*
+         Inicjalizacja pieszych w spawnArea, o liczebności count i punkcie docelowym goalNumber, który odzwierciedla SpawnArea
+            */
     void InitPedestrian(GameObject spawnArea, int count, int goalNumber)
     {
         var speed = Random.Range(3.0f, 4.0f);
@@ -87,24 +96,7 @@ public class PedestrianSpawnManager : MonoBehaviour {
             GameObject newPedestrian = Instantiate(pedestrianPrefab, new Vector3(spawnArea.transform.position.x - 0.5f + i*0.2f, spawnArea.transform.position.y, spawnArea.transform.position.z) , Quaternion.identity);
             newPedestrian.GetComponent<PedestrianMovement>().finalGoalPosition = spawnAreas[goalNumber].transform.position;
             newPedestrian.GetComponent<PedestrianMovement>().speed = speed;
-
-            //newPedestrian.GetComponent<PedestrianMovement>().initialGoalPosition = spawnAreas[goalNumber].transform.position;
             newPedestrian.GetComponent<Renderer>().material = spawnArea.GetComponent<SpawnArea>().pedestrianMaterial;
         }
-   }
-
-    string spawnAreaName(int spawnAreaNumber) //returns spawn area name
-    {
-        if (spawnAreaNumber == 0)
-            return "ALEJE_LEWA";
-        else if (spawnAreaNumber == 1)
-            return "ALEJE_PRAWA";
-        else if (spawnAreaNumber == 2)
-            return "WEJSCIE";
-        else if (spawnAreaNumber == 3)
-            return "AGH_LEWA";
-        else
-            return "AGH_PRAWA";
     }
-
 }

@@ -14,17 +14,18 @@ public class MenuScript : MonoBehaviour
         timeDropdown = GameObject.Find("TimeSelector").GetComponent<Dropdown>();
         dayDropdown = GameObject.Find("DaySelector").GetComponent<Dropdown>();
     }
-    // Start is called before the first frame update
+
     public void RunScene(int number)
     {
         ApplicationModel.numOfDay = dayDropdown.value;
         ApplicationModel.hhmmss = timeValueToHHMMSS(timeDropdown.value);
         ApplicationModel.sceneNumber = timeDropdown.value;
         SceneManager.LoadScene(number);
-
-        
     }
 
+    /*
+      Zamienia wartość z timeDropdown na string z godziną, przekazywany potem do ApplicationModel
+         */
     public string timeValueToHHMMSS(int val)
     {
         if (val == 0)

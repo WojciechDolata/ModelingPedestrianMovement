@@ -11,17 +11,15 @@ public class PedestrianMovement : MonoBehaviour
     public float speed = 3.0f;
     private NavMeshAgent agent;
 
-    // Start is called before the first frame update
     void Start()
     {
-        agent = this.GetComponent<NavMeshAgent>();
-        agent.SetDestination(finalGoalPosition); // probably initial goal is not needed, if so we have to delete it from PedestrianMovement
-        agent.speed = speed;
+        agent = this.GetComponent<NavMeshAgent>();  
+        agent.SetDestination(finalGoalPosition); // Ustawia punkt docelowy
+        agent.speed = speed; // Ustawia prędkość, ustawioną przedtem w PedestrianSpawnManager
     }
 
     void Update()
     {
-
         if (distance(finalGoalPosition, this.transform.position) < finalGoalAccuracy)
         {
             Destroy(this.gameObject);
