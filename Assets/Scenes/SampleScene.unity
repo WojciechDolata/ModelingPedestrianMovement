@@ -1575,7 +1575,7 @@ PrefabInstance:
     - target: {fileID: 459146800078582893, guid: be1d6eae90fbdf045bb1f12483b12554,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -228.41
+      value: -230.26
       objectReference: {fileID: 0}
     - target: {fileID: 459146800078582893, guid: be1d6eae90fbdf045bb1f12483b12554,
         type: 3}
@@ -1630,7 +1630,7 @@ PrefabInstance:
     - target: {fileID: 459146800078582893, guid: be1d6eae90fbdf045bb1f12483b12554,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 459146800078582893, guid: be1d6eae90fbdf045bb1f12483b12554,
         type: 3}
@@ -1667,6 +1667,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04b185190d0e3c44098522654d64039c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  self: {fileID: 0}
   initialGoal: {fileID: 365462630}
   pedestrianMaterial: {fileID: 2100000, guid: 82553353f2ab9414ebcf6633a8d306c8, type: 2}
   possibleTargets:
@@ -2148,6 +2149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04b185190d0e3c44098522654d64039c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  self: {fileID: 0}
   initialGoal: {fileID: 365462630}
   pedestrianMaterial: {fileID: 2100000, guid: 82553353f2ab9414ebcf6633a8d306c8, type: 2}
   possibleTargets:
@@ -5706,7 +5708,9 @@ MonoBehaviour:
   maxIntervalTime: 17
   yCoordinate: 8
   spawnPercentages: []
-  peoplePerMinute: 0
+  groupsPerMinute: 0
+  percentagesPerGroup: []
+  goalPercentages: []
 --- !u!114 &848562532
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6388,7 +6392,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 104
+  field of view: 96.4
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -6414,7 +6418,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0.44472787, y: -0.549855, z: 0.44526544, w: 0.5491952}
-  m_LocalPosition: {x: 7, y: 21.1, z: -42.4}
+  m_LocalPosition: {x: 7, y: 21.1, z: -52.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -9478,6 +9482,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04b185190d0e3c44098522654d64039c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  self: {fileID: 0}
   initialGoal: {fileID: 61341760}
   pedestrianMaterial: {fileID: 2100000, guid: e0c7c4cfe0ef572418722ad699d4300f, type: 2}
   possibleTargets:
@@ -12808,6 +12813,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04b185190d0e3c44098522654d64039c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  self: {fileID: 0}
   initialGoal: {fileID: 61341760}
   pedestrianMaterial: {fileID: 2100000, guid: e0c7c4cfe0ef572418722ad699d4300f, type: 2}
   possibleTargets:
@@ -14319,6 +14325,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04b185190d0e3c44098522654d64039c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  self: {fileID: 0}
   initialGoal: {fileID: 1250801452}
   pedestrianMaterial: {fileID: 2100000, guid: 82553353f2ab9414ebcf6633a8d306c8, type: 2}
   possibleTargets:

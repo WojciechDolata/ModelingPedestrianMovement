@@ -11,6 +11,8 @@ public class PedestrianSpawnManager : MonoBehaviour {
     public double groupsPerMinute; //number of ppl per minute to be spawned
     public List<double> percentagesPerGroup = new List<double>(); //procent ludzi w 1, 2, 3 i 4 osobowych grupach
     private GameObject spawnArea;
+    public List<double> goalPercentages = new List<double>();
+
 
     // Start is called before the first frame update
     void Start()
@@ -31,7 +33,7 @@ public class PedestrianSpawnManager : MonoBehaviour {
     {
         var randomTime = Random.Range((float) (60.0f*0.6/ groupsPerMinute), (float) (60.0f*1.4/ groupsPerMinute));
 
-        double randomNumber = Random.Range(0, 1);
+        double randomNumber = Random.Range(0.0f, 1.0f);
 
         int count = 1;
         double sum = 0;
@@ -44,7 +46,7 @@ public class PedestrianSpawnManager : MonoBehaviour {
             count++; // count now includes number of people to be spawned at once
         }
 
-        randomNumber = Random.Range(0, 1);
+        randomNumber = Random.Range(0.0f, 1.0f);
         int spawnAreaNumber = 0;
         sum = 0;
         foreach (var cur in spawnPercentages)
@@ -56,38 +58,50 @@ public class PedestrianSpawnManager : MonoBehaviour {
             spawnAreaNumber++; // spawnAreaNumber now includes number of spawn area to be spawned in
         }
 
+        goalPercentages = ApplicationModel.percentagesPerScenePerGoal[ApplicationModel.sceneNumber][spawnAreaNumber];
+
+        GameObject spawn = spawnAreas[spawnAreaNumber];
+
+        randomNumber = Random.Range(0.0f, 1.0f);
         int goalNumber = 0;
         sum = 0;
-        //foreach( var cur in spawnAreas[spawnAreaNumber].)
+        foreach( var cur in goalPercentages)
+        {
+            sum += cur;
+            if (randomNumber <= sum)
+                break;
 
+            goalNumber++; // now contains spawn area to end at (goal)
+        }
 
-
-        //spawnArea = spawnAreas[Random.Range(0, spawnAreas.Count)];
-
-        //Vector3 areaSize = spawnArea.GetComponent<Renderer>().bounds.size;
-        //Vector3 areaToSpawn = new Vector3(
-        //    spawnArea.transform.position.x + Random.Range(-areaSize.x / 2, areaSize.x / 2),
-        //    yCoordinate,
-        //    spawnArea.transform.position.z + Random.Range( - areaSize.z / 2, areaSize.z / 2));
-
-        //GameObject newPed = Instantiate(pedestrianPrefab, areaToSpawn, Quaternion.identity);
-        //InitPedestrian(newPed);
+        InitPedestrian(spawn, count, goalNumber);
 
         Invoke("InstantiatePedestrian", randomTime);
     }
 
-    void InitPedestrian(GameObject newPed)
+    void InitPedestrian(GameObject spawnArea, int count, int goalNumber)
     {
-        newPed.GetComponent<PedestrianMovement>().initialGoalPosition = spawnArea.GetComponent<SpawnArea>().initialGoal.transform.position;
+        for(int i = 0; i < count; i++)
+        {
+            GameObject newPedestrian = Instantiate(pedestrianPrefab, spawnArea.transform.position, Quaternion.identity);
+            newPedestrian.GetComponent<PedestrianMovement>().finalGoalPosition = spawnAreas[goalNumber].transform.position;
+            //newPedestrian.GetComponent<PedestrianMovement>().initialGoalPosition = spawnAreas[goalNumber].transform.position;
+            newPedestrian.GetComponent<Renderer>().material = spawnArea.GetComponent<SpawnArea>().pedestrianMaterial;
+        }
+   }
 
-        // pedestrian can reach every goal! (apart from its spawn position)
-        newPed.GetComponent<PedestrianMovement>().destinationObject = spawnArea.GetComponent<SpawnArea>().possibleTargets[Random.Range(0, spawnArea.GetComponent<SpawnArea>().possibleTargets.Count)];
-        //do
-        //{
-        //    newPed.GetComponent<PedestrianMovement>().destinationObject = spawnAreas[Random.Range(0, spawnAreas.Count)]; //spawnArea.GetComponent<SpawnArea>().possibleTargets[Random.Range(0, spawnArea.GetComponent<SpawnArea>().possibleTargets.Count - 1)];
-        //} while (
-        //    newPed.GetComponent<PedestrianMovement>().destinationObject.transform.position == newPed.GetComponent<PedestrianMovement>().initialGoalPosition
-        //);
-        newPed.GetComponent<Renderer>().material = spawnArea.GetComponent<SpawnArea>().pedestrianMaterial;
+    string spawnAreaName(int spawnAreaNumber) //returns spawn area name
+    {
+        if (spawnAreaNumber == 0)
+            return "ALEJE_LEWA";
+        else if (spawnAreaNumber == 1)
+            return "ALEJE_PRAWA";
+        else if (spawnAreaNumber == 2)
+            return "WEJSCIE";
+        else if (spawnAreaNumber == 3)
+            return "AGH_LEWA";
+        else
+            return "AGH_PRAWA";
     }
+
 }

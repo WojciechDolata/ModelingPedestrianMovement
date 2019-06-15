@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SpawnArea : MonoBehaviour
 {
+    public GameObject self;
     public GameObject initialGoal;
     public Material pedestrianMaterial;
     public List<GameObject> possibleTargets = new List<GameObject>();

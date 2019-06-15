@@ -8,7 +8,7 @@ public class CarMovement : MonoBehaviour
     public float minSpeed = 8;
     public float maxSpeed = 13;
     private NavMeshAgent agent;
-
+    
     // Start is called before the first frame update
     void Start()
     {
