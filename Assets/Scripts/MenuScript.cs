@@ -18,23 +18,25 @@ public class MenuScript : MonoBehaviour
     public void RunScene(int number)
     {
         ApplicationModel.numOfDay = dayDropdown.value;
-        ApplicationModel.hhmmss = timeValueToHHMMSS(timeDropdown.value); 
+        ApplicationModel.hhmmss = timeValueToHHMMSS(timeDropdown.value);
+        ApplicationModel.sceneNumber = timeDropdown.value;
         SceneManager.LoadScene(number);
+
         
     }
 
     public string timeValueToHHMMSS(int val)
     {
         if (val == 0)
-            return "07:00:00";
+            return "08:00:00";
         else if (val == 1)
-            return "11:00:00";
+            return "10:30:00";
         else if (val == 2)
             return "15:00:00";
         else if (val == 3)
-            return "18:00:00";
+            return "17:00:00";
         else
-            return "21:00:00";
+            return "20:00:00";
     }
 
     public void Quit()

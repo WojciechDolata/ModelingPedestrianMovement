@@ -7,29 +7,71 @@ public class PedestrianSpawnManager : MonoBehaviour {
     public float minIntervalTime;
     public float maxIntervalTime;
     public float yCoordinate = 8f;
-
+    public List<double> spawnPercentages = new List<double>(); //should get it from Application model based on hour
+    public double groupsPerMinute; //number of ppl per minute to be spawned
+    public List<double> percentagesPerGroup = new List<double>(); //procent ludzi w 1, 2, 3 i 4 osobowych grupach
     private GameObject spawnArea;
 
     // Start is called before the first frame update
     void Start()
     {
+        loadData();
         Invoke("InstantiatePedestrian", 1f);
+    }
+
+
+    void loadData()
+    {
+        groupsPerMinute = ApplicationModel.groupsPerMinute[ApplicationModel.sceneNumber];
+        spawnPercentages = ApplicationModel.percentagesPerScene[ApplicationModel.sceneNumber];
+        percentagesPerGroup = ApplicationModel.percentagePerGroup[ApplicationModel.sceneNumber];
     }
 
     void InstantiatePedestrian()
     {
-        float randomTime = Random.Range(minIntervalTime, maxIntervalTime);
+        var randomTime = Random.Range((float) (60.0f*0.6/ groupsPerMinute), (float) (60.0f*1.4/ groupsPerMinute));
 
-        spawnArea = spawnAreas[Random.Range(0, spawnAreas.Count)];
+        double randomNumber = Random.Range(0, 1);
 
-        Vector3 areaSize = spawnArea.GetComponent<Renderer>().bounds.size;
-        Vector3 areaToSpawn = new Vector3(
-            spawnArea.transform.position.x + Random.Range(-areaSize.x / 2, areaSize.x / 2),
-            yCoordinate,
-            spawnArea.transform.position.z + Random.Range( - areaSize.z / 2, areaSize.z / 2));
+        int count = 1;
+        double sum = 0;
+        foreach( var cur in percentagesPerGroup)
+        {
+            sum += cur;
+            if (randomNumber <= sum)
+                break;
 
-        GameObject newPed = Instantiate(pedestrianPrefab, areaToSpawn, Quaternion.identity);
-        InitPedestrian(newPed);
+            count++; // count now includes number of people to be spawned at once
+        }
+
+        randomNumber = Random.Range(0, 1);
+        int spawnAreaNumber = 0;
+        sum = 0;
+        foreach (var cur in spawnPercentages)
+        {
+            sum += cur;
+            if (randomNumber <= sum)
+                break;
+
+            spawnAreaNumber++; // spawnAreaNumber now includes number of spawn area to be spawned in
+        }
+
+        int goalNumber = 0;
+        sum = 0;
+        //foreach( var cur in spawnAreas[spawnAreaNumber].)
+
+
+
+        //spawnArea = spawnAreas[Random.Range(0, spawnAreas.Count)];
+
+        //Vector3 areaSize = spawnArea.GetComponent<Renderer>().bounds.size;
+        //Vector3 areaToSpawn = new Vector3(
+        //    spawnArea.transform.position.x + Random.Range(-areaSize.x / 2, areaSize.x / 2),
+        //    yCoordinate,
+        //    spawnArea.transform.position.z + Random.Range( - areaSize.z / 2, areaSize.z / 2));
+
+        //GameObject newPed = Instantiate(pedestrianPrefab, areaToSpawn, Quaternion.identity);
+        //InitPedestrian(newPed);
 
         Invoke("InstantiatePedestrian", randomTime);
     }
